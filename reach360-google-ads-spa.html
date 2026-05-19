@@ -1,0 +1,1648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reach 360 Digital Marketing | Personal Branding, Video Production, Meta Ads & Google Ads</title>
+  <meta name="description" content="Reach 360 helps founders and businesses grow through personal branding, viral video production, organic reach, Meta ads, and Google ads." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #070914;
+      --bg-soft: #101426;
+      --panel: rgba(255, 255, 255, 0.07);
+      --panel-strong: rgba(255, 255, 255, 0.12);
+      --text: #f8fafc;
+      --muted: #b8c3d9;
+      --line: rgba(255, 255, 255, 0.14);
+      --brand: #ff4f9a;
+      --brand-2: #ffb547;
+      --brand-3: #44d7b6;
+      --dark: #050711;
+      --shadow: 0 28px 90px rgba(0, 0, 0, 0.42);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: "Outfit", system-ui, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    img, video { display: block; max-width: 100%; }
+
+    .container {
+      width: min(1160px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: fixed;
+      z-index: 50;
+      top: 0;
+      left: 0;
+      width: 100%;
+      border-bottom: 1px solid var(--line);
+      background: rgba(7, 9, 20, 0.78);
+      backdrop-filter: blur(18px);
+    }
+
+    .nav {
+      height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+      letter-spacing: 0;
+      font-size: 1.28rem;
+    }
+
+    .logo-img {
+      width: 52px;
+      height: 42px;
+      object-fit: contain;
+      filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.35));
+    }
+
+    .brand-name {
+      color: #fff;
+      font-size: 1.32rem;
+      font-weight: 900;
+      letter-spacing: 0;
+      text-transform: uppercase;
+      text-shadow: 0 8px 24px rgba(255, 79, 154, 0.22);
+    }
+
+    .brand-name span {
+      color: var(--brand-2);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .nav-cta,
+    .button,
+    .form button {
+      border: 0;
+      cursor: pointer;
+      color: #10131f;
+      font: inherit;
+      font-weight: 800;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--brand-2), var(--brand));
+      box-shadow: 0 16px 42px rgba(255, 79, 154, 0.28);
+    }
+
+    .nav-cta {
+      padding: 12px 18px;
+      white-space: nowrap;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 92vh;
+      display: grid;
+      align-items: center;
+      padding: 120px 0 72px;
+      isolation: isolate;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 18% 20%, rgba(255, 79, 154, 0.22), transparent 28%),
+        radial-gradient(circle at 84% 22%, rgba(68, 215, 182, 0.16), transparent 25%),
+        linear-gradient(135deg, #070914 0%, #11182c 54%, #070914 100%);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -3;
+      background:
+        linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+      background-size: 58px 58px;
+      mask-image: linear-gradient(to bottom, #000, transparent 82%);
+    }
+
+    .social-rain {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      overflow: hidden;
+      opacity: 0.34;
+      filter: blur(0.8px) saturate(0.72);
+      mix-blend-mode: screen;
+    }
+
+    .social-float {
+      position: absolute;
+      bottom: -70px;
+      left: var(--x);
+      width: var(--size);
+      height: var(--size);
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.045);
+      backdrop-filter: blur(6px);
+      color: white;
+      font-weight: 800;
+      opacity: 0;
+      animation: rise var(--duration) linear infinite;
+      animation-delay: var(--delay);
+      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.12);
+    }
+
+    .social-float svg {
+      width: 58%;
+      height: 58%;
+      fill: currentColor;
+    }
+
+    .social-float.like { color: #46a3ff; }
+    .social-float.heart { color: #ff4f9a; }
+    .social-float.share { color: #44d7b6; }
+    .social-float.retweet { color: #79f28e; }
+
+    @keyframes rise {
+      0% { transform: translateY(0) translateX(0) rotate(-8deg) scale(0.82); opacity: 0; }
+      12% { opacity: 0.28; }
+      50% { transform: translateY(-55vh) translateX(28px) rotate(8deg) scale(1); }
+      88% { opacity: 0.22; }
+      100% { transform: translateY(-112vh) translateX(-18px) rotate(-10deg) scale(1.08); opacity: 0; }
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: minmax(0, 1.03fr) minmax(320px, 0.72fr);
+      gap: 46px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      width: fit-content;
+      margin-bottom: 18px;
+      padding: 9px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      color: #ffe2a8;
+      font-weight: 700;
+      font-size: 0.92rem;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 850px;
+      font-size: clamp(3rem, 7vw, 6.7rem);
+      line-height: 0.93;
+      letter-spacing: 0;
+    }
+
+    .hero p {
+      max-width: 720px;
+      margin: 22px 0 0;
+      color: var(--muted);
+      font-size: clamp(1.05rem, 2.1vw, 1.35rem);
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 32px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 15px 24px;
+    }
+
+    .button.secondary {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      box-shadow: none;
+    }
+
+    .hero-card {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.08);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card-brand {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 14px;
+      padding: 10px 12px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .hero-card-brand img {
+      width: 66px;
+      height: 46px;
+      object-fit: contain;
+      filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.3));
+    }
+
+    .hero-card-brand strong {
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0;
+    }
+
+    .hero-card-brand strong span {
+      color: var(--brand-2);
+    }
+
+    .hero-card video {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 22px;
+      background: linear-gradient(135deg, #27314d, #121726);
+    }
+
+    .metric-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .metric {
+      min-height: 84px;
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(0, 0, 0, 0.24);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 1.45rem;
+      line-height: 1;
+    }
+
+    .metric span {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 0.82rem;
+      line-height: 1.35;
+    }
+
+    section {
+      padding: 92px 0;
+      position: relative;
+    }
+
+    .section-head {
+      max-width: 760px;
+      margin-bottom: 34px;
+    }
+
+    .section-kicker {
+      margin: 0 0 10px;
+      color: var(--brand-2);
+      font-weight: 800;
+      text-transform: uppercase;
+      font-size: 0.86rem;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(2.1rem, 4vw, 4rem);
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    .section-head p {
+      margin: 16px 0 0;
+      color: var(--muted);
+      font-size: 1.08rem;
+      line-height: 1.7;
+    }
+
+    .services {
+      background: linear-gradient(180deg, var(--dark), var(--bg-soft));
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      align-items: stretch;
+    }
+
+    .service-card {
+      display: grid;
+      grid-template-columns: minmax(240px, 0.44fr) minmax(0, 0.56fr);
+      min-height: 260px;
+      padding: 0;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: var(--panel);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+      overflow: hidden;
+    }
+
+    .service-card.primary {
+      min-height: 390px;
+      background:
+        linear-gradient(145deg, rgba(255, 79, 154, 0.24), rgba(255, 181, 71, 0.13)),
+        var(--panel);
+    }
+
+    .service-card:not(.primary) {
+      min-height: 225px;
+    }
+
+    .service-card.reverse {
+      grid-template-columns: minmax(0, 0.56fr) minmax(240px, 0.44fr);
+    }
+
+    .service-card.reverse .service-media {
+      order: 2;
+    }
+
+    .service-card.reverse .service-copy {
+      order: 1;
+    }
+
+    .service-media {
+      position: relative;
+      min-height: 100%;
+      background: linear-gradient(135deg, rgba(255, 79, 154, 0.24), rgba(68, 215, 182, 0.22));
+      overflow: hidden;
+    }
+
+    .service-media img {
+      width: 100%;
+      height: 100%;
+      min-height: 225px;
+      object-fit: cover;
+      filter: saturate(1.08) contrast(1.04);
+    }
+
+    .service-media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 42%, rgba(5, 7, 17, 0.46));
+      pointer-events: none;
+    }
+
+    .service-copy {
+      display: grid;
+      align-content: center;
+      padding: 28px;
+    }
+
+    .rank {
+      display: inline-flex;
+      width: fit-content;
+      margin-bottom: 20px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255, 181, 71, 0.14);
+      border: 1px solid rgba(255, 181, 71, 0.22);
+      color: #ffe2a8;
+      font-weight: 800;
+      font-size: 0.82rem;
+    }
+
+    .service-card h3 {
+      margin: 0;
+      font-size: 1.34rem;
+      line-height: 1.16;
+    }
+
+    .service-card.primary h3 {
+      max-width: 520px;
+      font-size: clamp(2rem, 3.3vw, 3.25rem);
+      line-height: 1;
+    }
+
+    .service-card p {
+      margin: 12px 0 0;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 0.98rem;
+    }
+
+    .service-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 26px;
+    }
+
+    .service-list span {
+      padding: 13px 14px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: #f8fafc;
+      font-weight: 700;
+    }
+
+    .marquee-wrap {
+      overflow: hidden;
+      position: relative;
+      margin-inline: calc((100vw - min(1160px, calc(100vw - 32px))) / -2);
+    }
+
+    .video-slider {
+      position: relative;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 74px;
+    }
+
+    .marquee-wrap::before,
+    .marquee-wrap::after {
+      content: "";
+      position: absolute;
+      z-index: 2;
+      top: 0;
+      width: min(14vw, 180px);
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .marquee-wrap::before {
+      left: 0;
+      background: linear-gradient(to right, var(--bg), transparent);
+    }
+
+    .marquee-wrap::after {
+      right: 0;
+      background: linear-gradient(to left, var(--bg), transparent);
+    }
+
+    .marquee {
+      display: flex;
+      width: max-content;
+      gap: 18px;
+      padding: 10px 18px 24px;
+      animation: marquee-left 54s linear infinite;
+    }
+
+    .video-slider .marquee {
+      justify-content: center;
+      width: 100%;
+      animation: none;
+      transition: transform 0.45s ease;
+      will-change: contents;
+    }
+
+    .marquee.reverse { animation-name: marquee-right; }
+
+    .marquee-wrap:hover .marquee { animation-play-state: paused; }
+
+    .slider-btn {
+      position: absolute;
+      z-index: 5;
+      top: 50%;
+      transform: translateY(-50%);
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 50%;
+      background: rgba(7, 9, 20, 0.84);
+      color: #fff;
+      font-size: 1.7rem;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 0 16px 38px rgba(0, 0, 0, 0.34);
+    }
+
+    .slider-btn:hover {
+      background: rgba(255, 79, 154, 0.92);
+    }
+
+    .slider-btn.prev { left: 18px; }
+    .slider-btn.next { right: 18px; }
+
+    @keyframes marquee-left {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    @keyframes marquee-right {
+      from { transform: translateX(-50%); }
+      to { transform: translateX(0); }
+    }
+
+    .video-card {
+      flex: 0 0 190px;
+      border-radius: 26px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      opacity: 0.58;
+      transform: scale(0.9);
+      transition: opacity 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .video-card.active {
+      flex-basis: min(78vw, 340px);
+      opacity: 1;
+      transform: scale(1);
+      border-color: rgba(255, 255, 255, 0.28);
+    }
+
+    .video-card a,
+    .video-card button,
+    .video-card iframe,
+    .video-card video {
+      display: block;
+      position: relative;
+      width: 100%;
+      aspect-ratio: 9 / 16;
+      object-fit: cover;
+      border: 0;
+      background: linear-gradient(135deg, #1a2440, #33203e);
+    }
+
+    .video-card.active iframe {
+      pointer-events: auto;
+    }
+
+    .video-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .video-play {
+      cursor: pointer;
+      border: 0;
+      padding: 0;
+      overflow: hidden;
+      color: inherit;
+    }
+
+    .play-badge {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(to bottom, transparent 45%, rgba(0, 0, 0, 0.42));
+    }
+
+    .video-card.active .play-badge {
+      display: none;
+    }
+
+    .play-badge span {
+      display: grid;
+      place-items: center;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.92);
+      color: #111827;
+      font-weight: 900;
+      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.28);
+    }
+
+    .video-info { padding: 16px; }
+
+    .video-info strong {
+      display: block;
+      font-size: 1.02rem;
+      line-height: 1.25;
+    }
+
+    .video-info span {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .achievement-card {
+      flex: 0 0 260px;
+      min-height: 330px;
+      border-radius: 24px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      overflow: hidden;
+    }
+
+    .achievement-card img,
+    .achievement-shot {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      background: linear-gradient(135deg, rgba(255, 181, 71, 0.9), rgba(68, 215, 182, 0.78));
+    }
+
+    .achievement-card div { padding: 16px; }
+
+    .achievement-card strong { font-size: 1.06rem; }
+
+    .achievement-card span {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      line-height: 1.45;
+      font-size: 0.9rem;
+    }
+
+    .reviews {
+      background: linear-gradient(180deg, var(--bg-soft), var(--dark));
+    }
+
+    .review-card {
+      flex: 0 0 340px;
+      min-height: 245px;
+      padding: 22px;
+      border-radius: 24px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .stars {
+      color: var(--brand-2);
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+
+    .review-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 0.97rem;
+    }
+
+    .reviewer {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      color: #10131f;
+      font-weight: 900;
+    }
+
+    .reviewer strong { display: block; }
+
+    .reviewer span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.85rem;
+      margin-top: 2px;
+    }
+
+    .lead-section {
+      background:
+        radial-gradient(circle at 75% 20%, rgba(255, 79, 154, 0.18), transparent 28%),
+        var(--bg);
+    }
+
+    .lead-grid {
+      display: grid;
+      grid-template-columns: 0.82fr 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .lead-panel {
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      background: var(--panel);
+    }
+
+    .lead-panel h3 {
+      margin: 0;
+      font-size: 2rem;
+      line-height: 1.1;
+    }
+
+    .lead-panel p,
+    .lead-panel li {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 1.05rem;
+    }
+
+    .lead-panel ul {
+      display: grid;
+      gap: 10px;
+      margin: 22px 0 0;
+      padding-left: 20px;
+    }
+
+    .form {
+      display: grid;
+      gap: 18px;
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      background: rgba(255, 255, 255, 0.1);
+      box-shadow: var(--shadow);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    label {
+      display: grid;
+      gap: 8px;
+      color: #f8fafc;
+      font-size: 1rem;
+      font-weight: 800;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 16px;
+      background: rgba(5, 7, 17, 0.84);
+      color: #ffffff;
+      outline: 0;
+      padding: 16px;
+      font: inherit;
+      font-size: 1.06rem;
+      line-height: 1.35;
+    }
+
+    input::placeholder,
+    textarea::placeholder { color: #9fb0cd; opacity: 1; }
+
+    select option { background: #101426; color: #fff; }
+
+    textarea { min-height: 132px; resize: vertical; }
+
+    .form button {
+      min-height: 58px;
+      padding: 16px 24px;
+      font-size: 1.08rem;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      background: #050711;
+      padding: 34px 0;
+      color: var(--muted);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    footer strong {
+      display: block;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    footer a,
+    footer span {
+      display: block;
+      color: var(--muted);
+      margin-top: 8px;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .hero-grid,
+      .service-grid,
+      .lead-grid,
+      .footer-grid { grid-template-columns: 1fr; }
+      .hero {
+        min-height: auto;
+        text-align: center;
+      }
+      .hero p,
+      .section-head,
+      .lead-panel p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .hero-actions,
+      .eyebrow {
+        justify-content: center;
+      }
+      .hero-card {
+        max-width: 420px;
+        margin: 0 auto;
+      }
+      .section-head {
+        text-align: center;
+      }
+      .service-card.primary { min-height: auto; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 560px) {
+      .container { width: min(100% - 22px, 1160px); }
+      .nav {
+        height: 64px;
+        gap: 12px;
+      }
+      .logo-img {
+        width: 46px;
+        height: 36px;
+      }
+      .brand-name {
+        font-size: 1.06rem;
+      }
+      .nav-cta {
+        min-height: 40px;
+        padding: 10px 14px;
+        font-size: 0.86rem;
+      }
+      .logo span:last-child { display: none; }
+      section { padding: 50px 0; }
+      .hero { padding: 88px 0 46px; }
+      .hero-grid { gap: 28px; }
+      .eyebrow {
+        max-width: 100%;
+        margin-bottom: 14px;
+        padding: 8px 12px;
+        font-size: 0.84rem;
+        line-height: 1.25;
+      }
+      h1 {
+        max-width: 340px;
+        margin-inline: auto;
+        font-size: 2.72rem;
+        line-height: 1.02;
+      }
+      .hero p {
+        max-width: 330px;
+        margin-top: 16px;
+        font-size: 0.98rem;
+        line-height: 1.5;
+      }
+      .hero-actions {
+        align-items: stretch;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 24px;
+      }
+      .button {
+        width: 100%;
+        min-height: 48px;
+        padding: 13px 18px;
+        font-size: 0.96rem;
+      }
+      .hero-card {
+        width: min(100%, 330px);
+        padding: 12px;
+        border-radius: 20px;
+      }
+      .hero-card-brand {
+        margin-bottom: 10px;
+        padding: 8px 10px;
+        border-radius: 14px;
+      }
+      .hero-card-brand img {
+        width: 54px;
+        height: 36px;
+      }
+      .hero-card-brand strong {
+        font-size: 0.86rem;
+      }
+      .hero-card video {
+        aspect-ratio: 16 / 9;
+        border-radius: 16px;
+      }
+      .metric-row {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 7px;
+        margin-top: 9px;
+      }
+      .metric {
+        min-height: 64px;
+        padding: 10px 6px;
+        border-radius: 13px;
+        text-align: center;
+      }
+      .metric strong { font-size: 1.08rem; }
+      .metric span {
+        margin-top: 5px;
+        font-size: 0.68rem;
+        line-height: 1.2;
+      }
+      .section-head { margin-bottom: 22px; }
+      .section-kicker { font-size: 0.78rem; }
+      h2 {
+        max-width: 340px;
+        margin-inline: auto;
+        font-size: 2.02rem;
+        line-height: 1.04;
+      }
+      .section-head p {
+        max-width: 330px;
+        margin-top: 12px;
+        font-size: 0.94rem;
+        line-height: 1.5;
+      }
+      .service-grid { gap: 12px; }
+      .service-card {
+        grid-template-columns: 110px minmax(0, 1fr);
+        min-height: auto;
+        border-radius: 18px;
+      }
+      .service-card.reverse {
+        grid-template-columns: minmax(0, 1fr) 110px;
+      }
+      .service-card.reverse .service-media { order: 2; }
+      .service-card.reverse .service-copy { order: 1; }
+      .service-card.primary {
+        grid-template-columns: 1fr;
+      }
+      .service-card.primary .service-media,
+      .service-card.primary .service-copy {
+        order: initial;
+      }
+      .service-media img {
+        min-height: 100%;
+      }
+      .service-card.primary .service-media img {
+        height: 185px;
+      }
+      .service-copy {
+        padding: 16px;
+      }
+      .service-card.primary h3,
+      .service-card h3 {
+        font-size: 1.08rem;
+        line-height: 1.18;
+      }
+      .service-card.primary h3 {
+        font-size: 1.54rem;
+      }
+      .service-card p {
+        margin-top: 10px;
+        font-size: 0.84rem;
+        line-height: 1.45;
+      }
+      .service-list {
+        gap: 8px;
+        margin-top: 14px;
+      }
+      .service-list span {
+        padding: 9px 10px;
+        font-size: 0.8rem;
+        line-height: 1.25;
+      }
+      .rank {
+        margin-bottom: 10px;
+        font-size: 0.76rem;
+      }
+      .marquee {
+        gap: 12px;
+        padding: 6px 12px 16px;
+      }
+      .video-slider .marquee {
+        gap: 10px;
+        padding-inline: 0;
+      }
+      .marquee-wrap::before,
+      .marquee-wrap::after {
+        width: 44px;
+      }
+      .slider-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.35rem;
+      }
+      .slider-btn.prev { left: 10px; }
+      .slider-btn.next { right: 10px; }
+      .video-slider {
+        padding: 0 46px;
+      }
+      .video-card {
+        flex-basis: 58px;
+        border-radius: 18px;
+      }
+      .video-card.active {
+        flex-basis: min(76vw, 270px);
+      }
+      .video-card a,
+      .video-card button,
+      .video-card iframe,
+      .video-card video,
+      .video-placeholder {
+        aspect-ratio: 9 / 16;
+      }
+      .video-info {
+        padding: 12px;
+      }
+      .video-info strong {
+        font-size: 0.92rem;
+        line-height: 1.22;
+      }
+      .video-info span {
+        font-size: 0.8rem;
+      }
+      .achievement-card {
+        flex-basis: 210px;
+        min-height: 255px;
+        border-radius: 18px;
+      }
+      .achievement-card img,
+      .achievement-shot {
+        height: 150px;
+      }
+      .achievement-card div {
+        padding: 12px;
+      }
+      .achievement-card strong {
+        font-size: 0.94rem;
+      }
+      .achievement-card span {
+        font-size: 0.8rem;
+        line-height: 1.35;
+      }
+      .review-card {
+        flex-basis: 282px;
+        min-height: 210px;
+        padding: 17px;
+        border-radius: 18px;
+      }
+      .stars {
+        margin-bottom: 10px;
+        font-size: 0.88rem;
+      }
+      .review-card p {
+        font-size: 0.86rem;
+        line-height: 1.5;
+      }
+      .reviewer {
+        gap: 10px;
+        margin-top: 14px;
+      }
+      .avatar {
+        width: 38px;
+        height: 38px;
+        font-size: 0.82rem;
+      }
+      .reviewer strong {
+        font-size: 0.9rem;
+      }
+      .reviewer span {
+        font-size: 0.76rem;
+      }
+      .lead-panel,
+      .form {
+        padding: 18px;
+        border-radius: 20px;
+      }
+      .lead-panel {
+        text-align: center;
+      }
+      .lead-panel h3 {
+        max-width: 300px;
+        margin-inline: auto;
+        font-size: 1.58rem;
+        line-height: 1.14;
+      }
+      .lead-panel p,
+      .lead-panel li {
+        font-size: 0.92rem;
+        line-height: 1.5;
+      }
+      .lead-panel ul {
+        display: none;
+      }
+      .form {
+        gap: 14px;
+      }
+      label {
+        gap: 7px;
+        font-size: 0.92rem;
+      }
+      input,
+      select,
+      textarea {
+        min-height: 48px;
+        padding: 13px 14px;
+        border-radius: 13px;
+        font-size: 0.96rem;
+      }
+      textarea { min-height: 112px; }
+      .form button {
+        min-height: 52px;
+        padding: 14px 18px;
+        font-size: 0.98rem;
+      }
+      footer {
+        padding: 28px 0;
+        text-align: center;
+      }
+      .footer-grid {
+        gap: 18px;
+      }
+      footer strong {
+        margin-bottom: 6px;
+      }
+      footer a,
+      footer span {
+        margin-top: 6px;
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .marquee,
+      .social-float { animation: none; }
+      .social-float { display: none; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a href="#home" class="logo" aria-label="Reach 360 home">
+        <img class="logo-img" src="reach360-logo-transparent.png" alt="Reach 360 logo">
+        <span class="brand-name">Reach <span>360</span></span>
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#services">Services</a>
+        <a href="#videos">Videos</a>
+        <a href="#achievements">Achievements</a>
+        <a href="#reviews">Reviews</a>
+      </nav>
+      <a class="nav-cta" href="#contact">Get Leads</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="social-rain" id="socialRain" aria-hidden="true"></div>
+
+      <div class="container hero-grid">
+        <div>
+          <h1>Grow your brand. Get better leads.</h1>
+          <p>
+            Viral videos, organic reach, Meta ads, and Google ads for businesses that want visible growth.
+          </p>
+          <div class="hero-actions">
+            <a class="button" href="#contact">Start My Growth Plan</a>
+            <a class="button secondary" href="#videos">Watch Our Work</a>
+          </div>
+        </div>
+
+        <aside class="hero-card" aria-label="Campaign preview">
+          <div class="hero-card-brand">
+            <img src="reach360-logo-transparent.png" alt="Reach 360 logo">
+            <strong>Reach <span>360</span></strong>
+          </div>
+          <video autoplay muted loop playsinline poster="">
+            <source src="https://framerusercontent.com/assets/RvcJYPZAYDPYSQI4RuNq0cdZVHs.mp4" type="video/mp4">
+          </video>
+          <div class="metric-row">
+            <div class="metric"><strong>10K+</strong><span>Videos produced</span></div>
+            <div class="metric"><strong>10X</strong><span>Growth provided</span></div>
+            <div class="metric"><strong>100+</strong><span>Clients</span></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="services" id="services">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-kicker">Priority based growth</p>
+          <h2>Brand first. Ads next. Leads always.</h2>
+          <p>We build trust with video content, then use Meta and Google ads to bring enquiries.</p>
+        </div>
+
+        <div class="service-grid">
+          <article class="service-card primary">
+            <div class="service-media">
+              <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Video production camera setup" loading="lazy">
+            </div>
+            <div class="service-copy">
+              <span class="rank">Priority 01</span>
+              <h3>Personal Branding & Viral Video Production</h3>
+              <p>Strategy, scripting, shooting, editing, and posting for reels, shorts, testimonials, and founder videos.</p>
+              <div class="service-list">
+                <span>Content strategy and monthly calendar</span>
+                <span>Reels, shorts, founder videos and testimonials</span>
+                <span>Trend research, hooks, scripts and editing</span>
+                <span>Organic reach and community growth</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="service-card reverse">
+            <div class="service-media">
+              <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Social media app icons for Meta ads" loading="lazy">
+            </div>
+            <div class="service-copy">
+              <span class="rank">Priority 02</span>
+              <h3>Meta Ads for Demand & Retargeting</h3>
+              <p>Facebook and Instagram campaigns for enquiries, retargeting, and warm audience growth.</p>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-media">
+              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Analytics dashboard for Google ads" loading="lazy">
+            </div>
+            <div class="service-copy">
+              <span class="rank">Priority 03</span>
+              <h3>Google Ads for High Intent Leads</h3>
+              <p>Search campaigns for people already looking for your service.</p>
+            </div>
+          </article>
+
+          <article class="service-card reverse">
+            <div class="service-media">
+              <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Team planning a lead funnel" loading="lazy">
+            </div>
+            <div class="service-copy">
+              <span class="rank">Priority 04</span>
+              <h3>Lead Funnel & CRM Support</h3>
+              <p>Landing pages, forms, WhatsApp flow, and follow-up tracking.</p>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-media">
+              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Marketing reporting dashboard" loading="lazy">
+            </div>
+            <div class="service-copy">
+              <span class="rank">Priority 05</span>
+              <h3>Creative Reporting</h3>
+              <p>Simple weekly updates on content, ads, leads, and next steps.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="videos">
+      <div class="marquee-wrap video-slider">
+        <button class="slider-btn prev" type="button" aria-label="Previous video" onclick="moveVideoSlider(-1)">‹</button>
+        <button class="slider-btn next" type="button" aria-label="Next video" onclick="moveVideoSlider(1)">›</button>
+        <div class="marquee" id="videoTrack"></div>
+      </div>
+    </section>
+
+    <section id="achievements">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-kicker">Proof and achievements</p>
+          <h2>Campaign wins and milestones.</h2>
+          <p>Growth screenshots, client moments, awards, and media proof.</p>
+        </div>
+      </div>
+      <div class="marquee-wrap">
+        <div class="marquee reverse" id="achievementTrack"></div>
+      </div>
+    </section>
+
+    <section class="reviews" id="reviews">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-kicker">Client reviews</p>
+          <h2>Clients trust our growth work.</h2>
+          <p>Reviews from brands, founders, and service businesses.</p>
+        </div>
+      </div>
+      <div class="marquee-wrap">
+        <div class="marquee" id="reviewTrackOne"></div>
+      </div>
+      <div class="marquee-wrap">
+        <div class="marquee reverse" id="reviewTrackTwo"></div>
+      </div>
+    </section>
+
+    <section class="lead-section" id="contact">
+      <div class="container lead-grid">
+        <div class="lead-panel">
+          <p class="section-kicker">Start your campaign</p>
+          <h3>Tell us your goal.</h3>
+          <p>We will suggest the right mix of branding, videos, Meta ads, and Google ads.</p>
+          <ul>
+            <li>Best for founders and local businesses.</li>
+            <li>Clear content, ad, and lead plan.</li>
+            <li>Fast WhatsApp follow-up.</li>
+          </ul>
+        </div>
+
+        <form class="form" onsubmit="submitLead(event)">
+          <div class="form-row">
+            <label>
+              Full name
+              <input name="name" type="text" placeholder="Your name" required>
+            </label>
+            <label>
+              Phone number
+              <input name="phone" type="tel" placeholder="+91 98765 43210" required>
+            </label>
+          </div>
+
+          <div class="form-row">
+            <label>
+              Business type
+              <input name="business" type="text" placeholder="Clinic, real estate, coaching, retail..." required>
+            </label>
+            <label>
+              Main goal
+              <select name="goal" required>
+                <option value="">Select one</option>
+                <option>Personal branding and video production</option>
+                <option>Organic reach and viral reels</option>
+                <option>Meta ads for leads</option>
+                <option>Google ads for leads</option>
+                <option>Complete growth funnel</option>
+              </select>
+            </label>
+          </div>
+
+          <label>
+            Monthly marketing budget
+            <select name="budget" required>
+              <option value="">Select budget</option>
+              <option>Below Rs. 25,000</option>
+              <option>Rs. 25,000 - Rs. 50,000</option>
+              <option>Rs. 50,000 - Rs. 1,00,000</option>
+              <option>Above Rs. 1,00,000</option>
+            </select>
+          </label>
+
+          <label>
+            Message
+            <textarea name="message" placeholder="Tell us about your business, location, and what kind of leads you want."></textarea>
+          </label>
+
+          <button type="submit">Send My Growth Request</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <strong>Reach 360 Digital Marketing</strong>
+        <span>Personal branding, video production, organic reach, Meta ads, and Google ads.</span>
+      </div>
+      <div>
+        <strong>Services</strong>
+        <a href="#services">Personal Branding</a>
+        <a href="#videos">Video Production</a>
+        <a href="#services">Meta Ads</a>
+        <a href="#services">Google Ads</a>
+      </div>
+      <div>
+        <strong>Contact</strong>
+        <span>Coimbatore, Tamil Nadu</span>
+        <a href="tel:+919876543210">+91 98765 43210</a>
+        <a href="mailto:hello@reach360.in">hello@reach360.in</a>
+        <a href="https://www.reach360.in/">www.reach360.in</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const iconSvg = {
+      like: '<svg viewBox="0 0 24 24"><path d="M2 21h4V9H2v12Zm20-11c0-1.1-.9-2-2-2h-6.3l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L13.17 1 6.59 7.59C6.22 7.95 6 8.45 6 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2Z"/></svg>',
+      heart: '<svg viewBox="0 0 24 24"><path d="M12 21.35 10.55 20.03C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35Z"/></svg>',
+      share: '<svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11A2.99 2.99 0 1 0 15 5c0 .24.04.47.09.7L8.04 9.81A3 3 0 1 0 8.04 14.2l7.12 4.18c-.04.2-.06.41-.06.62a2.9 2.9 0 1 0 2.9-2.92Z"/></svg>',
+      retweet: '<svg viewBox="0 0 24 24"><path d="M7 7h10.17l-2.58-2.59L16 3l5 5-5 5-1.41-1.41L17.17 9H7v3H5V9c0-1.1.9-2 2-2Zm10 10H6.83l2.58 2.59L8 21l-5-5 5-5 1.41 1.41L6.83 15H17v-3h2v3c0 1.1-.9 2-2 2Z"/></svg>'
+    };
+
+    function createSocialRain() {
+      const rain = document.getElementById("socialRain");
+      const types = ["like", "heart", "share", "retweet"];
+      const total = 34;
+
+      for (let i = 0; i < total; i += 1) {
+        const type = types[i % types.length];
+        const item = document.createElement("span");
+        item.className = `social-float ${type}`;
+        item.innerHTML = iconSvg[type];
+        item.style.setProperty("--x", `${Math.random() * 100}%`);
+        item.style.setProperty("--size", `${24 + Math.random() * 24}px`);
+        item.style.setProperty("--duration", `${13 + Math.random() * 11}s`);
+        item.style.setProperty("--delay", `${Math.random() * -18}s`);
+        rain.appendChild(item);
+      }
+    }
+
+    const videoItems = [
+      "videos/reel-01.mp4",
+      "videos/reel-02.mp4",
+      "videos/reel-03.mp4",
+      "videos/reel-04.mp4",
+      "videos/reel-05.mp4",
+      "videos/reel-06.mp4",
+      "videos/reel-07.mp4",
+      "videos/reel-08.mp4"
+    ];
+
+    let videoSlideIndex = 0;
+
+    const achievementItems = [
+      { title: "100+ Happy Clients", text: "Growth campaigns across local and service businesses.", image: "" },
+      { title: "500+ Videos Produced", text: "Reels, shorts, founder stories, and campaign creatives.", image: "" },
+      { title: "Viral Reach Campaigns", text: "Content planned around hooks, retention, and sharing.", image: "" },
+      { title: "Meta Lead Campaigns", text: "Facebook and Instagram funnels built for enquiries.", image: "" },
+      { title: "Google Search Leads", text: "High-intent traffic for service-based businesses.", image: "" },
+      { title: "Founder Brand Shoots", text: "Personal brand visuals for trust and authority.", image: "" },
+      { title: "Creative Strategy", text: "Monthly content direction and performance learning.", image: "" },
+      { title: "Business Growth", text: "Organic reach supported by conversion-focused ads.", image: "" }
+    ];
+
+    const reviews = [
+      ["Priya S.", "Boutique Owner", "Reach 360 made my Instagram look premium and helped us get real store walk-ins."],
+      ["Arun K.", "Real Estate Consultant", "The video strategy helped people remember my face before they ever called me."],
+      ["Dr. Meena R.", "Clinic Founder", "The team made our services simple to understand through reels and ad creatives."],
+      ["Naveen P.", "Education Business", "Our lead quality improved after they changed both the videos and the Google ads."],
+      ["Divya M.", "Wellness Coach", "My personal brand finally feels consistent, clear, and professional."],
+      ["Suresh B.", "Car Dealer", "Their reels brought better attention than our old poster-style ads."],
+      ["Karthik V.", "Interior Designer", "The project videos helped clients trust our work before the first meeting."],
+      ["Janani T.", "Retail Founder", "They gave us a content calendar that was easy to follow and strong for sales."],
+      ["Vikram R.", "Restaurant Owner", "The short videos made our offers travel faster on Instagram."],
+      ["Aishwarya N.", "Beauty Studio", "We started getting enquiries from people who saw the reels first and ads later."],
+      ["Mohan G.", "Service Business", "Reach 360 explained the funnel clearly and improved our follow-up process."],
+      ["Harini L.", "Fashion Brand", "The shoots, editing, captions, and ads all felt connected."],
+      ["Rahul S.", "Fitness Coach", "My audience began engaging more once the content became more personal."],
+      ["Anitha J.", "Training Institute", "Google ads started performing better after they fixed the landing message."],
+      ["Balaji C.", "Local Business", "They focused on leads, not just likes, and that made the difference."],
+      ["Swetha D.", "Event Planner", "The videos looked polished and helped us stand apart from competitors."],
+      ["Prakash M.", "Construction", "Our brand looked more trustworthy within the first month."],
+      ["Keerthi A.", "Consultant", "The personal branding shoots helped me show my expertise with confidence."],
+      ["Santhosh E.", "Healthcare", "The campaign reports were simple and useful for decisions."],
+      ["Lavanya P.", "Retail Chain", "We now have a clear mix of organic videos, Meta ads, and search ads."]
+    ];
+
+    function duplicate(items) {
+      return [...items, ...items];
+    }
+
+    function renderVideos() {
+      const track = document.getElementById("videoTrack");
+      const previous = (videoSlideIndex - 1 + videoItems.length) % videoItems.length;
+      const next = (videoSlideIndex + 1) % videoItems.length;
+      const visible = [
+        { src: videoItems[previous], index: previous, active: false },
+        { src: videoItems[videoSlideIndex], index: videoSlideIndex, active: true },
+        { src: videoItems[next], index: next, active: false }
+      ];
+
+      track.innerHTML = visible.map(video => `
+        <article class="video-card${video.active ? " active" : ""}">
+          ${video.active
+            ? `<video src="${video.src}" autoplay muted loop playsinline controls preload="auto"></video>`
+            : `<button class="video-play" type="button" onclick="playShort(${video.index})" aria-label="Select Reach 360 reel">
+                <video src="${video.src}" muted playsinline preload="metadata"></video>
+                <span class="play-badge"><span>▶</span></span>
+              </button>`}
+        </article>
+      `).join("");
+    }
+
+    function moveVideoSlider(direction) {
+      videoSlideIndex = (videoSlideIndex + direction + videoItems.length) % videoItems.length;
+      renderVideos();
+    }
+
+    function playShort(index) {
+      videoSlideIndex = index;
+      renderVideos();
+    }
+
+    function renderAchievements() {
+      const track = document.getElementById("achievementTrack");
+      track.innerHTML = duplicate(achievementItems).map((item, index) => `
+        <article class="achievement-card">
+          ${item.image
+            ? `<img src="${item.image}" alt="${item.title}">`
+            : `<div class="achievement-shot" aria-hidden="true"></div>`}
+          <div>
+            <strong>${item.title}</strong>
+            <span>${item.text}</span>
+          </div>
+        </article>
+      `).join("");
+    }
+
+    function reviewCard(review) {
+      const [name, role, text] = review;
+      const initials = name.split(" ").map(part => part[0]).join("").replace(".", "");
+      return `
+        <article class="review-card">
+          <div class="stars">★★★★★</div>
+          <p>"${text}"</p>
+          <div class="reviewer">
+            <div class="avatar">${initials}</div>
+            <div>
+              <strong>${name}</strong>
+              <span>${role}</span>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    function renderReviews() {
+      const first = reviews.slice(0, 10);
+      const second = reviews.slice(10);
+      document.getElementById("reviewTrackOne").innerHTML = duplicate(first).map(reviewCard).join("");
+      document.getElementById("reviewTrackTwo").innerHTML = duplicate(second).map(reviewCard).join("");
+    }
+
+    function submitLead(event) {
+      event.preventDefault();
+      const form = event.currentTarget;
+      const data = new FormData(form);
+      const message = [
+        "New Reach 360 enquiry",
+        `Name: ${data.get("name")}`,
+        `Phone: ${data.get("phone")}`,
+        `Business: ${data.get("business")}`,
+        `Goal: ${data.get("goal")}`,
+        `Budget: ${data.get("budget")}`,
+        `Message: ${data.get("message") || "No message"}`
+      ].join("\n");
+
+      const whatsappNumber = "919876543210";
+      window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, "_blank");
+      form.reset();
+    }
+
+    createSocialRain();
+    renderVideos();
+    renderAchievements();
+    renderReviews();
+  </script>
+</body>
+</html>
